@@ -1,0 +1,11 @@
+.ContactContainer{
+    width: 85%;
+    height: 100vh;
+    background-color: #faebd7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap-reverse;
+    gap: 20px;
+    cursor: pointer;
+}
