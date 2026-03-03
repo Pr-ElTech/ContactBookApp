@@ -10,7 +10,7 @@ height:max-content;
 display: flex;
 align-items: center;
 justify-content: center;
-background-color: red;
+background-color: white;
 }
 
 .mainBody{
@@ -19,6 +19,7 @@ background-color: red;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   padding: 10px;
-  background-color: black;
+  background-color: white;
 }

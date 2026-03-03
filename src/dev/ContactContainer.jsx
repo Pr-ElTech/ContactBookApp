@@ -5,7 +5,7 @@ import { useState } from 'react'
 import React from 'react'
 
 const ContactContainer = () => {
-const [contactDetails , setContactDetail] = useState ({
+const [contactDetail , setContactDetail] = useState ({
     Name: "",
     Tel: "",
     Email:"",
