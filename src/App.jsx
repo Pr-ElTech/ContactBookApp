@@ -7,8 +7,7 @@ import './App.css'
 function App() {
 
   return (
-    <section className='mainBody'>
-    <InputHolder/>  
+    <section className='mainBody'> 
     <ContactContainer/>
     </section>
   )

@@ -1,3 +1,22 @@
+.bodyHolder{
+    width: 100%;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: centerS;
+}
+
+
+.inputbar{
+    width: 85%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: aqua;
+}
+
 .ContactContainer{
     width: 85%;
     height: 100vh;

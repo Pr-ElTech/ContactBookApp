@@ -1,10 +1,10 @@
 import React from 'react'
 import Input from '../components/Input'
 import '../CSS/InputHolder.css'
-const InputHolder = () => {
+const InputHolder = ({AddBtn,contactRec, setter}) => {
   return (
     <div className='inputHolder'>
-      <Input/>
+      <Input HandleAddbtn = {AddBtn} input = {contactRec} set={setter} />
       
     </div>
   )

@@ -1,6 +1,7 @@
 import ContactCard from '../components/ContactCard'
 import '../CSS/ContactContainer.css'
 import { useState } from 'react'
+import InputHolder from './InputHolder'
 
 import React from 'react'
 
@@ -9,7 +10,6 @@ const [contactDetail , setContactDetail] = useState ({
     Name: "",
     Tel: "",
     Email:"",
-    Date:"",
     Note: ""
 })
 const [contacts, setContact] = useState(JSON.parse(localStorage.getItem ("contacts"))|| [
@@ -33,10 +33,16 @@ const handleContact = () =>{
 
 
   return (
+    <section className='bodyHolder'>
+
+        <div className='inputbar'>
+            <InputHolder AddBtn= {handleContact} setter={setContactDetail}  contactRec={contactDetail}/> 
+        </div>
     <div className='ContactContainer'>
 {        contacts.map((details)=> (  <ContactCard key={details.ID} template = {details}/>))
  }  
     </div>
+    </section>
   )
 }
 
