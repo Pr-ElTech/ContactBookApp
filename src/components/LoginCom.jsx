@@ -9,7 +9,16 @@ const [loginData,setLoginData] = useState ({
 })
 
 const handleloginData = () =>{
-
+if (!loginData.Email || !loginData.UserName || !loginData.Password){
+  alert ("All field required!")
+  return false;
+}
+else if (loginData.Email || loginData.UserName){
+return true;
+}
+else{
+  
+}
 }
 
   return (
