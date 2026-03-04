@@ -8,9 +8,10 @@ function App() {
 
   return (
     <section className='mainBody'> 
-    <ContactContainer/>
+    {/* <ContactContainer/> */}
     </section>
   )
 }
 
 export default App
+ 

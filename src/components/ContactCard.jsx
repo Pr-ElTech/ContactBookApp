@@ -9,9 +9,9 @@ const ContactCard = ({template, deletedContact}) => {
         <li>{template?.Name}</li>
         <li>{template?.Tel}</li>
         <li>{template?.Email}</li>
-        <li>{template?.ID}</li>
+        <li>{template?.Date}</li>
         <li>{template?.Note}</li>
-        <button onClick={deletedContact}>delete</button>
+        <button onClick={()=>deletedContact(template.ID)}>delete</button>
     </ul>
     </div>
   )

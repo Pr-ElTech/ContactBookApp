@@ -4,7 +4,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: centerS;
+    align-items: center;
 }
 
 
@@ -18,12 +18,12 @@
 }
 
 .ContactContainer{
-    width: 85%;
-    height: 100vh;
+    width: 88%;
+    height: max-content;
     background-color: #faebd7;
     display: flex;
+    padding: 20px;
     align-items: center;
-    justify-content: center;
     flex-wrap: wrap-reverse;
     gap: 20px;
 }
