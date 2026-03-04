@@ -1,0 +1,24 @@
+import React from 'react'
+import { useState } from 'react'
+
+const LoginCom = () => {
+const [loginData,setLoginData] = useState ({
+    Email:"",
+    UserName:"",
+    Password:""
+})
+
+const handleloginData = () =>{
+
+}
+
+  return (
+    <div>
+        <input type="email"  placeholder='Email / username' value={loginData.Email || loginData.UserName } />
+        <input type="text"   placeholder='Password' value={loginData.Password}/>
+        <button>Login</button>
+    </div>
+  )
+}
+
+export default LoginCom
