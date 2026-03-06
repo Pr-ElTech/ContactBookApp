@@ -11,7 +11,7 @@ const [signupData,setSignupData] = useState ({
     confirmPass: ""
 })
 
-const [userDataBox, setUserDataBox] = useState ([])
+const [userDataBox, setUserDataBox] = useState (JSON.parse(localStorage.getItem("userUdate"))||[])
 
 const handleSingUp = () =>{
   if (!signupData.Email ||!signupData.PhoneNumber|| !signupData.Password ){
@@ -29,8 +29,9 @@ const handleSingUp = () =>{
 
   else{
 const sucessfulData =  [...userDataBox, signupData]
-setUserDataBox (sucessfulData)
-console.log(sucessfulData)
+setUserDataBox (localStorage.setItem("userUdate", JSON.stringify(sucessfulData)))
+alert("signup scuccessful")
+
   }
 
 
