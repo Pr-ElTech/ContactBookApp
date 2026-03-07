@@ -73,7 +73,7 @@ return false;
 else if (loginData.Password !== userMenu.Password)
     alert("incorrect password!")
 else{
-  
+      localStorage.setItem("activeUser", JSON.stringify(userFound));
 }
 }
 
