@@ -4,6 +4,7 @@ import LoginCom from '../components/LoginCom'
 import SignUpBox from '../components/SignUpBox'
 import Header from '../components/Header'
 import '../CSS/Datasholder.css'
+import LadingUserPage from "../components/LadingUserPage"
 
 const Datasholder = () => {
     const [signupData,setSignupData] = useState ({
@@ -35,8 +36,10 @@ const handleSingUp = () =>{
   }
 
   else{
-const successfulData =  [...userDataBox, signupData]
-setUserDataBox (localStorage.setItem("userUpdate", JSON.stringify(successfulData)))
+    const signupID = {...signupData, ID:new Date().toLocaleString() }
+const successfulData =  [...userDataBox, signupID]
+localStorage.setItem("userUpdate", JSON.stringify(successfulData))
+setUserDataBox(successfulData)
 alert("signup successful")
 setSignupData(
     {
@@ -59,11 +62,15 @@ const [loginData,setLoginData] = useState ({
     Password:""
 })
 
+const [activeUser, setActiveUser]= useState (JSON.parse(localStorage.getItem("activeUsers"))|| [])
+
+
 const handleloginData = () =>{
-if (!loginData.Email || !loginData.UserName || !loginData.Password){
+if (!loginData.Email || !loginData.Password){
   alert ("All field required!")
   return false;
 }
+
 const userMenu = userDataBox.find((user)=>user.Email === loginData.Email || 
 user.UserName === loginData.UserName)
 if (!userMenu){
@@ -73,7 +80,14 @@ return false;
 else if (loginData.Password !== userMenu.Password)
     alert("incorrect password!")
 else{
-      localStorage.setItem("activeUser", JSON.stringify(userFound));
+    const activeDataUser = [...activeUser,userMenu ]
+      localStorage.setItem("activeUsers", JSON.stringify(activeDataUser));
+      setActiveUser(activeDataUser)
+      setLoginData({
+            Email:"",
+            UserName:"",
+            Password:""
+      })
 }
 }
 
@@ -81,10 +95,11 @@ else{
   return (
     <section className='holder'>
 
-      <Header/>
-      <SignUpBox  userSignUp = {signupData} signupBtn = {handleSingUp} setinput = {setSignupData} /> 
-      <LoginCom userLoginData = {loginData} />
-      
+      <Header users = {activeUser}/>
+      <LadingUserPage/>
+      {/* <SignUpBox  userSignUp = {signupData} signupBtn = {handleSingUp} setinput = {setSignupData} /> 
+      <LoginCom userLoginData = {loginData} loginBtn = {handleloginData} setinput2 ={setLoginData} />
+       */}
       
     </section>
   )
