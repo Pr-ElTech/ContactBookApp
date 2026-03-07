@@ -4,6 +4,7 @@ import ContactContainer from './dev/ContactContainer'
 import InputHolder from './dev/InputHolder'
 import SignUpBox from './components/SignUpBox'
 import LoginCom from './components/LoginCom'
+import Datasholder from './dev/Datasholder'
 import './App.css'
 
 function App() {
@@ -11,9 +12,7 @@ function App() {
   return (
     <section className='mainBody'> 
     {/* <ContactContainer/> */}
-    <SignUpBox/>
-    <LoginCom/>
-    
+    <Datasholder/>
     </section>
   )
 }

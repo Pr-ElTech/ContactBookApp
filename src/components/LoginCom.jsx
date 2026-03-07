@@ -3,24 +3,6 @@ import { useState } from 'react'
 import "../CSS/LogiCom.css"
 
 const LoginCom = () => {
-const [loginData,setLoginData] = useState ({
-    Email:"",
-    UserName:"",
-    Password:""
-})
-
-const handleloginData = () =>{
-if (!loginData.Email || !loginData.UserName || !loginData.Password){
-  alert ("All field required!")
-  return false;
-}
-else if (loginData.Email || loginData.UserName){
-return true;
-}
-else{
-  
-}
-}
 
   return (
     <div className='loginbox'>
