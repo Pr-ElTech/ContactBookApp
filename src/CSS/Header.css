@@ -1,52 +1,52 @@
-header{
-    height:50px;
-    width: 100%;
+header {
+  height: 100px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* position: fixed; */
+
+  & .logo {
+    span {
+      color: aqua;
+    }
+  }
+
+  & .userpart {
     display: flex;
-    justify-content: space-between;
+    gap: 10px;
+    justify-content: center;
     align-items: center;
+    padding: 10px;
 
-    & .logo{
-        span{
-            color: aqua;
-        }
-    }
-
-    & .userpart{
-       display: flex; 
-       gap: 10px;
-       justify-content: center;
-       align-items: center;
-       padding: 10px;
-    
-       & h2{
-        border: 1px solid aqua;
-        height: 50px;
-        width: 50px;
-        border-radius: 25px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        cursor: pointer;
-        background-color: black;
-        color: aqua;
-      
+    & h2 {
+      border: 1px solid aqua;
+      height: 50px;
+      width: 50px;
+      border-radius: 25px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      background-color: black;
+      color: aqua;
     }
 
-            & button{
-            height: 50px;
-            width: 100px;
-            outline: none;
-            border-radius: 10px;
-            cursor: pointer;
-            background-color: black;
-            color: aqua;
-            font-weight: bold;
-            border: 1px solid gray;
-            transition: 0.3s;
+    & button {
+      height: 50px;
+      width: 100px;
+      outline: none;
+      border-radius: 10px;
+      cursor: pointer;
+      background-color: black;
+      color: aqua;
+      font-weight: bold;
+      border: 1px solid gray;
+      transition: 0.3s;
     }
 
-    & button:hover{
-    background-color: rgb(87, 85, 85);
+    & button:hover {
+      background-color: rgb(87, 85, 85);
     }
-        }
-    }
+  }
+}
