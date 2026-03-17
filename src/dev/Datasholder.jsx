@@ -1,12 +1,10 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import LoginCom from "../components/LoginCom";
 import SignUpBox from "../components/SignUpBox";
-import Header from "../components/Header";
 import "../CSS/Datasholder.css";
 import LadingUserPage from "../components/LadingUserPage";
 
-const Datasholder = ({ users, clickAction }) => {
+const Datasholder = ({ users, setCurrentView, currentView, setActiveUser }) => {
   const [signupData, setSignupData] = useState({
     Email: "",
     PhoneNumber: "",
@@ -47,6 +45,9 @@ const Datasholder = ({ users, clickAction }) => {
       localStorage.setItem("userUpdate", JSON.stringify(successfulData));
       setUserDataBox(successfulData);
       alert("signup successful");
+
+      setCurrentView("login");
+
       setSignupData({
         Email: "",
         PhoneNumber: "",
@@ -71,12 +72,14 @@ const Datasholder = ({ users, clickAction }) => {
     if (!userMenu) {
       alert("user not found");
       return false;
-    } else if (loginData.Password !== userMenu.Password)
+    } else if (loginData.Password !== userMenu.Password) {
       alert("incorrect password!");
-    else {
-      const activeDataUser = [...activeUser, userMenu];
+    } else {
+      const activeDataUser = [userMenu];
       localStorage.setItem("activeUsers", JSON.stringify(activeDataUser));
+
       setActiveUser(activeDataUser);
+
       setLoginData({
         Email: "",
         UserName: "",
@@ -87,24 +90,26 @@ const Datasholder = ({ users, clickAction }) => {
 
   return (
     <section className="holder">
-      {users ? (
-        <LadingUserPage />
-      ) : (
+      {currentView === "landing" && (
         <>
-          {!clickAction === true ? (
-            <SignUpBox
-              userSignUp={signupData}
-              signupBtn={handleSingUp}
-              setinput={setSignupData}
-            />
-          ) : (
-            <LoginCom
-              userLoginData={loginData}
-              loginBtn={handleloginData}
-              setinput2={setLoginData}
-            />
-          )}
+          <LadingUserPage />
         </>
+      )}
+
+      {currentView === "signup" && (
+        <SignUpBox
+          userSignUp={signupData}
+          signupBtn={handleSingUp}
+          setinput={setSignupData}
+        />
+      )}
+
+      {currentView === "login" && (
+        <LoginCom
+          userLoginData={loginData}
+          loginBtn={handleloginData}
+          setinput2={setLoginData}
+        />
       )}
     </section>
   );

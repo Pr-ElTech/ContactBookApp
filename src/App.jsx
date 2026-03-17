@@ -10,28 +10,32 @@ function App() {
   const [activeUser, setActiveUser] = useState(
     JSON.parse(localStorage.getItem("activeUsers")) || [],
   );
+  const [currentView, setCurrentView] = useState("landing");
 
-  const [signUpClick, setSignUpClick] = useState(false);
-  const [loginClick, setLoginUpClick] = useState(false);
-
-  const setpage = () => {
-    if (signUpClick === true) {
-      setSignUpClick(signUpClick);
-      return;
-    }
-    setSignUpClick(false);
-  };
+  const goToSignup = () => setCurrentView("signup");
+  const goToLogin = () => setCurrentView("login");
 
   return (
+    // CLASS: mainBody (from your App.css)
     <section className="mainBody">
-      <Header users={activeUser} clickAction={setpage} />
-      {!activeUser ? (
+      <Header
+        users={activeUser}
+        clickAction1={goToSignup}
+        clickAction2={goToLogin}
+        logoutAction={() => setActiveUser([])}
+      />
+
+      {activeUser.length > 0 ? (
         <ContactContainer setUsers={setActiveUser} />
       ) : (
-        <Datasholder users={activeUser} clickAction={setpage} />
+        <Datasholder
+          setCurrentView={setCurrentView}
+          users={activeUser}
+          currentView={currentView}
+          setActiveUser={setActiveUser}
+        />
       )}
     </section>
   );
 }
-
 export default App;

@@ -1,28 +1,7 @@
-// import React from 'react'
-// import '../CSS/Header.css'
-// const Header = ({users}) => {
-//   return (
-// <header>
-//     <div className='logo'><h1>PR-EL <span>TECH</span>/C</h1></div>
-
-//     <div className='userpart'>{users? ({users.?map((item)=>(<h2 key={item.ID }>{item?.userName?.charAt(0).toUpperCase()}</h2>))}
-//       && <button>Logout</button> ): (<button>Login / Signin</button>
-
-//       && <button>Signup / Register</button>)
-
-//       }
-//     </div>
-
-// </header>
-//   )
-// }
-
-// export default Header
-
 import React from "react";
 import "../CSS/Header.css";
 
-const Header = ({ users, clickAction }) => {
+const Header = ({ users, clickAction1, clickAction2, logoutAction }) => {
   return (
     <header>
       <div className="logo">
@@ -37,12 +16,12 @@ const Header = ({ users, clickAction }) => {
             {users.map((item) => (
               <h2 key={item.ID}>{item?.userName?.charAt(0).toUpperCase()}</h2>
             ))}
-            <button>Logout</button>
+            <button onClick={logoutAction}>Logout</button>
           </>
         ) : (
           <>
-            <button>Login / Signin</button>
-            <button onClick={clickAction}>Signup / Register</button>
+            <button onClick={clickAction2}>Login / Signin</button>
+            <button onClick={clickAction1}>Signup / Register</button>
           </>
         )}
       </div>
