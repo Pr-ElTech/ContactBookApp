@@ -2,20 +2,34 @@ import { useState } from "react";
 import { useEffect } from "react";
 import ContactContainer from "./dev/ContactContainer";
 import InputHolder from "./dev/InputHolder";
-import SignUpBox from "./components/SignUpBox";
-import LoginCom from "./components/LoginCom";
 import Datasholder from "./dev/Datasholder";
 import Header from "./components/Header";
 import "./App.css";
 
 function App() {
-  localStorage.setItem("activeUsers", JSON.stringify(activeDataUser));
+  const [activeUser, setActiveUser] = useState(
+    JSON.parse(localStorage.getItem("activeUsers")) || [],
+  );
+
+  const [signUpClick, setSignUpClick] = useState(false);
+  const [loginClick, setLoginUpClick] = useState(false);
+
+  const setpage = () => {
+    if (signUpClick === true) {
+      setSignUpClick(signUpClick);
+      return;
+    }
+    setSignUpClick(false);
+  };
 
   return (
     <section className="mainBody">
-      <Header users={activeUser} />
-      <ContactContainer />
-      <Datasholder />
+      <Header users={activeUser} clickAction={setpage} />
+      {!activeUser ? (
+        <ContactContainer setUsers={setActiveUser} />
+      ) : (
+        <Datasholder users={activeUser} clickAction={setpage} />
+      )}
     </section>
   );
 }

@@ -6,7 +6,7 @@ import Header from "../components/Header";
 import "../CSS/Datasholder.css";
 import LadingUserPage from "../components/LadingUserPage";
 
-const Datasholder = () => {
+const Datasholder = ({ users, clickAction }) => {
   const [signupData, setSignupData] = useState({
     Email: "",
     PhoneNumber: "",
@@ -15,15 +15,15 @@ const Datasholder = () => {
     confirmPass: "",
   });
 
+  const [userDataBox, setUserDataBox] = useState(
+    JSON.parse(localStorage.getItem("userUpdate")) || [],
+  );
+
   const [loginData, setLoginData] = useState({
     Email: "",
     UserName: "",
     Password: "",
   });
-
-  const [userDataBox, setUserDataBox] = useState(
-    JSON.parse(localStorage.getItem("userUpdate")) || [],
-  );
 
   const handleSingUp = () => {
     if (
@@ -58,10 +58,6 @@ const Datasholder = () => {
     }
   };
 
-  const [activeUser, setActiveUser] = useState(
-    JSON.parse(localStorage.getItem("activeUsers")) || [],
-  );
-
   const handleloginData = () => {
     if (!loginData.Email || !loginData.Password) {
       alert("All field required!");
@@ -91,17 +87,25 @@ const Datasholder = () => {
 
   return (
     <section className="holder">
-      <LadingUserPage />
-      <SignUpBox
-        userSignUp={signupData}
-        signupBtn={handleSingUp}
-        setinput={setSignupData}
-      />
-      <LoginCom
-        userLoginData={loginData}
-        loginBtn={handleloginData}
-        setinput2={setLoginData}
-      />
+      {users ? (
+        <LadingUserPage />
+      ) : (
+        <>
+          {!clickAction === true ? (
+            <SignUpBox
+              userSignUp={signupData}
+              signupBtn={handleSingUp}
+              setinput={setSignupData}
+            />
+          ) : (
+            <LoginCom
+              userLoginData={loginData}
+              loginBtn={handleloginData}
+              setinput2={setLoginData}
+            />
+          )}
+        </>
+      )}
     </section>
   );
 };

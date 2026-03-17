@@ -22,7 +22,7 @@
 import React from "react";
 import "../CSS/Header.css";
 
-const Header = ({ users }) => {
+const Header = ({ users, clickAction }) => {
   return (
     <header>
       <div className="logo">
@@ -32,7 +32,6 @@ const Header = ({ users }) => {
       </div>
 
       <div className="userpart">
-        {/* Check if users exists and has items */}
         {users && users.length > 0 ? (
           <>
             {users.map((item) => (
@@ -43,7 +42,7 @@ const Header = ({ users }) => {
         ) : (
           <>
             <button>Login / Signin</button>
-            <button>Signup / Register</button>
+            <button onClick={clickAction}>Signup / Register</button>
           </>
         )}
       </div>
