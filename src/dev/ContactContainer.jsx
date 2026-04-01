@@ -16,6 +16,14 @@ const ContactContainer = () => {
     JSON.parse(localStorage.getItem("contacts")) || [],
   );
 
+  const [editAction, setEditAction] = useState(null);
+  const [saveEdit, setSaveEdit] = useState({
+    Name: "",
+    Tel: "",
+    Email: "",
+    Note: "",
+  });
+
   const handleContact = () => {
     if (!contactDetail.Name || !contactDetail.Tel || !contactDetail.Email) {
       alert("all feilds are required");
@@ -30,7 +38,7 @@ const ContactContainer = () => {
       const contactInfo = [...contacts, newContact];
       setContact(contactInfo);
       localStorage.setItem("contacts", JSON.stringify(contactInfo));
-    setContactDetail({
+      setContactDetail({
         Name: "",
         Tel: "",
         Email: "",
@@ -44,6 +52,24 @@ const ContactContainer = () => {
     setContact(deletedContact);
     localStorage.setItem("contacts", JSON.stringify(deletedContact));
   };
+  const editTemplete = (id) => {
+    setEditAction(id);
+    const templeteToEdit = contacts.find((item) => item.ID === id);
+    setSaveEdit(templeteToEdit);
+  };
+
+  const saveAction = (id) => {
+    const updatedtemplete = contacts.map((item) =>
+      item.ID === id
+        ? { ...saveEdit, Date: new Date().toLocaleDateString() }
+        : item,
+    );
+
+    setContactDetail(updatedtemplete);
+    localStorage.setItem("contacts", JSON.stringify(updatedtemplete));
+    setEditAction(null);
+  };
+
   return (
     <section className="bodyHolder">
       <div className="inputbar">
@@ -56,6 +82,8 @@ const ContactContainer = () => {
       <div className="ContactContainer">
         {contacts.map((details) => (
           <ContactCard
+            saveInput={saveAction}
+            inputEdit={editTemplete}
             key={details.ID}
             template={details}
             deletedContact={handdleDelete}
